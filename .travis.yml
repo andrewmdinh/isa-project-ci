@@ -7,23 +7,14 @@ python:
 
 services: docker 
 
-env:
-
 
 before_install: 
   - docker pull tp33/django
   - docker run -it --name mysql -d -e MYSQL\_ROOT\_PASSWORD='$3cureUS' -v ~/db:/var/lib/mysql  mysql:5.7.14
   - sleep 10
-  - docker run -it --name mysql-cmdline --link mysql:db mysql:5.7.14 bash -c "mysql -uroot -p'\$3cureUS' -h db"
   - docker ps -a
+  - docker run -it --name mysql-cmdline --link mysql:db mysql:5.7.14 bash -c "mysql -uroot -p'\$3cureUS' -h db"
   - docker-compose up
-
-
-install: true
-# install:
-#   - pip install -r requirements.txt
-#   - pip install django==$DJANGO --quiet
-#   - pip install psycopg2 --quiet
 
 
 script:
