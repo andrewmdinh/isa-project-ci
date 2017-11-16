@@ -13,6 +13,8 @@ env:
 before_install: 
   - docker pull tp33/django
   - docker pull mysql:5.7.14
+  - docker start mysql 
+  - docker ps -a
   - docker-compose up
 
 
