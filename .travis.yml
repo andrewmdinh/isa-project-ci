@@ -1,17 +1,20 @@
+sudo: required
+
 language: python
 
 python:
   - 3.5
 
-services: postgresql
+services: docker 
 
 env:
-  - DJANGO=1.4.1
 
-before_install:
-  - export DJANGO_SETTINGS_MODULE=uc_app.settings
-  - export PYTHONPATH=$HOME/builds/andrewmdinh/isa-project-ci
-  - export PIP_USE_MIRRORS=true
+
+before_install: 
+  - docker pull tp33/django
+  - docker pull mysql:5.7.14
+  - docker-compose up
+
 
 install: true
 # install:
@@ -21,4 +24,4 @@ install: true
 
 
 script:
-- python manage.py test
+  - python manage.py test
