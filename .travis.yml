@@ -20,7 +20,7 @@ before_install:
   # - create database cs4501 character set utf8;
   # - grant all on cs4501.* to 'www'@'%';
   # - exit
-  - docker-compose build
+  - docker-compose up -d
 
 
 
