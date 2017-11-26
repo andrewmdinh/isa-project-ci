@@ -27,4 +27,4 @@ before_install:
 script:
   - docker-compose up -d
   - docker ps -a 
-  - docker exec -it models python manage.py test
+  - docker exec -it models bash -c "python manage.py test"
